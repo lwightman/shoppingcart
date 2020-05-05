@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  demo-postgres:
+    # build: ./demoDB
+    image: "postgres:11.5-alpine"
+    container_name: demo-postgres
+    volumes:
+      - demo-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: demo
+    # expose:
+    #   - 5432
+    ports:
+      - 5432:5432
+    # network_mode: bridge
+
+  shoppingcart-server:
+    # image: server:latest
+    # network_mode: bridge
+    container_name: shoppingcart-server
+    build: ./server
+    environment:
+      - DB_SERVER=demo-postgres
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+      - POSTGRES_DB=demo
+    # expose:
+    #   - 8443
+    ports:
+      # - 8443:8443
+      - 8080:8080
+    links:
+      - demo-postgres
+
+  shoppingcart-ui:
+    build: ./web2
+    container_name: shoppingcart-ui
+    ports:
+      - 4200:80
+    links:
+      - shoppingcart-server
+
+volumes:
+  demo-data:
