@@ -1,0 +1,16 @@
+<h2>Products</h2>
+
+<div style="border: 2px solid dodgerblue; padding: 5px; margin: 5px" *ngFor="let item of items">
+    <h3>
+        {{ item.name }}
+    </h3>
+
+    <p *ngIf="item.description">
+        Description: {{ item.description }}
+    </p>
+
+    <button (click)="addToCart(item)">
+        Add to Cart
+    </button>
+</div>
+

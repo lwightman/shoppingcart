@@ -1,0 +1,127 @@
+databaseChangeLog:
+  - changeSet:
+      id: 99-1
+      author: lisa
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: itemPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(256)
+              - column:
+                  name: description
+                  type: VARCHAR(1024)
+            tableName: item
+  - changeSet:
+      id: 99-2
+      author: lisa
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: cartPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: item_id
+                  type: BIGINT
+              - column:
+                  name: quantity
+                  type: INTEGER
+            tableName: cart_item
+  - changeSet:
+      id: 99-10
+      author: lisa
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: name
+            indexName: uidx_Item_Name
+            tableName: item
+  - changeSet:
+      id: 99-11
+      author: lisa
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: item_id
+            baseTableName: cart_item
+            constraintName: fk_CartItem_Item
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: item
+            referencedTableCatalogName: cart_item
+            validate: true
+  - changeSet:
+      id: data
+      author: lisa
+      changes:
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Basketball"
+              - column:
+                  name: "description"
+                  value: "Want to play hoops?"
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Baseball"
+              - column:
+                  name: "description"
+                  value: "Diamonds are a girl's best friend."
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Football"
+              - column:
+                  name: "description"
+                  value: "Love my Patriots!"
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Volleyball"
+              - column:
+                  name: "description"
+                  value: "Has anyone seen Wilson?"
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Soccer"
+              - column:
+                  name: "description"
+                  value: "Would you like to run for 90 minutes?"
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: "name"
+                  value: "Golf"
+              - column:
+                  name: "description"
+                  value: "A very long walk."

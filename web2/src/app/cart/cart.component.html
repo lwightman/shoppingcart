@@ -1,0 +1,24 @@
+<script src="./src/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner();
+</script>
+
+<h3>Cart</h3>
+
+<div *ngIf="cartItems else noCartItems">
+
+    <div class="cart-item" *ngFor="let cartItem of cartItems">
+        <span>{{ cartItem.item.name }}</span>
+        <span>
+            <input type="number" [(ngModel)]="cartItem.quantity" min="0" max="100" step="1"/>
+        </span>
+    </div>
+
+    <div>
+        <button class="button" (click)="update(cartItems)">Update Cart</button>
+        <button class="button" (click)="clear()">Clear Cart</button>
+    </div>
+</div>
+
+<ng-template #noCartItems>Your cart is empty.</ng-template>
+
