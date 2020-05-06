@@ -7,5 +7,4 @@ This has been my life for the past 10 days.  I have definitely learned more than
 **To stop:** ```docker-compose down --rmi all --remove-orphans`````
 
 
-
 Enjoy...
