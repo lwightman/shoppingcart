@@ -13,7 +13,7 @@ export class CartService {
 
     addToCart(item) {
         const params = new HttpParams().set('jsonString', JSON.stringify(item));
-        return this.httpClient.get(`/cart/add`,
+        return this.httpClient.get(`/item/add`,
             {params},
         )
             .subscribe(

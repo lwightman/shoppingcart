@@ -7,16 +7,9 @@ spring:
     username: demo
     password: demo
   jpa:
-    showSql: true
+#    showSql: true
     hibernate:
       ddlAuto: none
-#    properties:
-#      hibernate:
-#        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-#        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-#      org:
-#        hibernate:
-#          flushMode: COMMIT
 
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect # because we disable feature detection above
 

@@ -1,6 +1,7 @@
 package com.lisa.demo.controller;
 
 import com.lisa.demo.domain.Item;
+import com.lisa.demo.services.CartService;
 import com.lisa.demo.services.ItemService;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +24,8 @@ class ItemControllerTest {
 
     @Mock
     private ItemService mockItemService;
+    @Mock
+    private CartService mockCartService;
 
     private MockMvc mockMvc;
 
@@ -30,7 +33,7 @@ class ItemControllerTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        ItemController controller = spy(new ItemController(mockItemService));
+        ItemController controller = spy(new ItemController(mockItemService, mockCartService));
         mockMvc = standaloneSetup(controller).build();
     }
 

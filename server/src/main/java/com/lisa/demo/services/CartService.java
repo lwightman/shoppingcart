@@ -24,6 +24,7 @@ public class CartService {
     final ItemRepository mItemRepository;
 
     public Optional<CartItem> add(final String jsonString) throws JsonProcessingException {
+        System.out.println("*************** " +jsonString);
         Item itemToAdd = new ObjectMapper().readValue(jsonString, Item.class);
 
         CartItem itemInCart = mCartItemRepository.findOneByItem(itemToAdd);  // should only return 1
