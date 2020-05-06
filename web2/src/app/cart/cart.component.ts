@@ -10,7 +10,6 @@ export class CartComponent {
     cartItems;
     counter: any;
 
-
     constructor(private cartService: CartService) {
         this.cartService.getCartItems()
             .subscribe((response)=>{
@@ -23,7 +22,6 @@ export class CartComponent {
     }
 
     clear(){
-        this.cartService.clear();
-        window.location.reload();
+        this.cartItems = this.cartService.clear();
     }
 }

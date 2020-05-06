@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,6 @@ public class ItemController {
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getItems(){
-        System.out.println("ItemController getItems()");
         Optional<List<Item>> results = mItemService.getItems();
 
         if(results.isPresent()){
@@ -44,7 +42,7 @@ public class ItemController {
     }
 
     @GetMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> add(@RequestParam(required = true) final String jsonString) throws JsonProcessingException {
+    public ResponseEntity<?> add( final String jsonString) throws JsonProcessingException {
         Optional<CartItem> results = mCartService.add(jsonString);
 
         if(results.isPresent()){

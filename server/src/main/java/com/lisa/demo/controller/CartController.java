@@ -19,24 +19,13 @@ import java.util.Optional;
 @Controller
 @Slf4j
 @RequestMapping("/cart")
-@CrossOrigin(origins = {"http://shoppingcart-server:4200", "http://shoppingcart-server:4201"})
+@CrossOrigin(origins = {"http://shoppingcart-server:4200"})
 public class CartController {
     private final CartService mCartService;
 
     public CartController(final CartService cartService){
         mCartService = cartService;
     }
-
-//    @GetMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
-//    private final ResponseEntity<?> add(@RequestParam(required = true) final String jsonString) throws JsonProcessingException {
-//        Optional<CartItem> results = mCartService.add(jsonString);
-//
-//        if(results.isPresent()){
-//            return new ResponseEntity<>(results.get(), HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>("I've got issues.", HttpStatus.OK);
-//        }
-//    }
 
     @GetMapping(value = "/getItems", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getItems() {
@@ -54,7 +43,6 @@ public class CartController {
         mCartService.update(jsonString);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-
 
     @GetMapping(value = "/clear", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> clear() {

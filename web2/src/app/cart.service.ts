@@ -34,7 +34,6 @@ export class CartService {
     }
 
     clear() {
-        console.log("clearing...");
         this.httpClient.get(`/cart/clear`)
             .subscribe(
                 val => {
@@ -47,13 +46,12 @@ export class CartService {
                     console.log("The clear observable is now completed.");
                 }
             );
-        this.cartItems = [];
-        console.log("clearing...");
+        this.cartItems = null;
+
         return this.cartItems;
     }
 
     update(cartItems: any) {
-        console.log("updating...");
         const params = new HttpParams().set('jsonString', JSON.stringify(cartItems));
         this.cartItems = this.httpClient.get(`/cart/update`,
             {params},
@@ -69,7 +67,5 @@ export class CartService {
                 console.log("The update observable is now completed.");
             }
         );
-        console.log("updating...Done");
-        console.log(this.cartItems);
     }
 }
