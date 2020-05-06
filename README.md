@@ -1,4 +1,4 @@
-#Welcome to my Shopping Cart Life
+Welcome to my Shopping Cart Life
 
 This has been my life for the past 10 days.  I have definitely learned more than I ever thought.
 
